@@ -6,11 +6,6 @@ on:
 jobs:
   deploy-to-production:
     runs-on: ubuntu-latest
-    env:
-      NEXT_PUBLIC_DB_ENV: prod
-      NEXT_PUBLIC_CDN_DOMAIN: https://prod.cdn.aploze.com
-      NEXT_PUBLIC_IMGIX_DOMAIN: https://prod.cdn.aploze.com
-      NEXT_PUBLIC_API_ENDPOINT: https://prod.api.aploze.com
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
@@ -25,7 +20,7 @@ jobs:
       - name: Install packages
         run: npm ci
       - name: Build next js project and export it
-        run: npm run export
+        run: npm run build
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
